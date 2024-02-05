@@ -1,0 +1,143 @@
+/* 
+*Global
+
+*header
+-Navbar
+
+*HomePage:
+-Hero
+-About
+-Treatments
+*/
+
+
+/* 
+*Global 
+*/
+
+/* 
+*Navbar
+*/
+
+.header {
+  display: flex;
+  flex-direction: row;
+
+
+  .navbar ul {
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+  }
+
+  li {
+    list-style-type: none;
+  }
+
+}
+
+/* 
+*HomePage
+*/
+
+/* Hero */
+.Hero {
+  display: flex;
+  justify-content: space-between;
+
+
+
+  .button {
+    display: flex;
+    gap: .5em;
+  }
+
+  .btn:first-of-type {
+    background-color: #F27979;
+    padding: 10px;
+
+    a {
+      color: #fff;
+    }
+  }
+
+  .playIcon {
+    background-color: #d1b7a5;
+    border-radius: 50%;
+    padding: 5px;
+    align-self: center;
+  }
+
+  .heroLeaf {
+    align-self: center;
+
+    img {
+      height: 300px;
+    }
+  }
+
+  .heroImage {
+    img {
+      /*       position: absolute;
+      top: 0;
+      right: 0; */
+
+      object-fit: cover;
+      height: 450px;
+    }
+  }
+
+  .heroContent {
+    align-self: center;
+
+    p {
+      width: 400px;
+    }
+  }
+
+  .chinaRoseImage {
+    position: absolute;
+    top: 45%;
+    left: 18%;
+
+    img {
+      height: 70px;
+      object-fit: cover;
+    }
+  }
+}
+
+/* About */
+.about {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+
+
+}
+
+.aboutBgImg {
+  position: absolute;
+  top: 65%;
+  right: 5%;
+  height: 40px;
+}
+
+/* Treatments */
+.treatmentsContainer {
+  margin: 2em 0;
+  display: flex;
+  flex-direction: row;
+  gap: .4em;
+
+  .treatmentsImage {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+}
+
+.treatmentsCardContainer {
+  display: flex;
+  flex-direction: row;
+}

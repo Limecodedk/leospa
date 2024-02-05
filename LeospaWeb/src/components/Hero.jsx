@@ -1,0 +1,58 @@
+import React, { useEffect } from 'react'
+import useRequestData from '../hooks/useRequestData'
+import { Link } from 'react-router-dom';
+import { CiPlay1 } from "react-icons/ci";
+
+const Hero = () => {
+
+  const { data, isLoading, error, makeRequest } = useRequestData();
+  const { data: dataService, isLoading: isLoadingService, error: errorService, makeRequest: makeRequestService } = useRequestData()
+
+  useEffect(() => {
+
+    makeRequest("http://localhost:5029/hero")
+    makeRequestService("http://localhost:5029/hero?show=true")
+  }, [])
+
+  return (
+    <>
+      <section className='Hero'>
+        <div className="heroLeaf">
+          <img src="/public/assets/leaf.png" alt="" />
+        </div>
+        {
+          data &&
+          <>
+            <div className='heroContent'>
+              <span>{data?.[0].title1}</span>
+              <h1>{data?.[0].title2}</h1>
+              <p>{data?.[0].content}</p>
+
+              <div className="button">
+                <div className="btn">
+                  <Link to={'/'}>
+                    Reserve now
+                  </Link>
+                </div>
+                <div className="btn">
+                  <Link to={'/'}>
+                    <CiPlay1 className='playIcon' /> Watch our story
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </>
+        }
+        <div className="heroImage">
+          <img src="/public/assets/spa.png" alt="" />
+        </div>
+
+        <div className="chinaRoseImage">
+          <img src="/public/assets/china-rose.png" alt="" />
+        </div>
+      </section>
+    </>
+  )
+}
+
+export default Hero
