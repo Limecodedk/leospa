@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { FaRegEdit } from "react-icons/fa";
 import useRequestData from '../../hooks/useRequestData'
+import { Link } from 'react-router-dom';
 
 
 const Dashboard = () => {
@@ -23,16 +24,27 @@ const Dashboard = () => {
         </div>
         <div className="dashboardSetingsContainer">
           <div className="dashboardSetings">
-            <h2>Treatment <span><FaRegEdit /> Edit</span></h2>
+            <h2>Treatment
+              <span>
+                <Link to={'treatment'}>
+                  <FaRegEdit /> Edit
+                </Link>
+              </span>
+            </h2>
             {data?.slice(0, 5).map((item, index) => (
-              <h3>{item.title}</h3>
+              <Link to={"/admin/treatment/" + item._id}>
+                <h3>{item.title}</h3>
+              </Link>
             ))}
           </div>
           <div className="dashboardSetings">
-            <h2>Hero <span><FaRegEdit /> Edit</span></h2>
+            <h2>Hero <span><Link to={'hero'}><FaRegEdit /> Edit</Link></span></h2>
           </div>
           <div className="dashboardSetings">
-            <h2>Footer <span><FaRegEdit /> Edit</span></h2>
+            <h2>About <span><Link to={'about'}><FaRegEdit /> Edit</Link></span></h2>
+          </div>
+          <div className="dashboardSetings">
+            <h2>Footer <span><Link to={'footer/edit'}><FaRegEdit /> Edit</Link></span></h2>
           </div>
         </div>
 

@@ -21,34 +21,38 @@ const Hero = () => {
           <img src="/public/assets/leaf.png" alt="" />
         </div>
         {
-          data &&
-          <>
-            <div className='heroContent'>
-              <h3>{data?.[0].title1}</h3>
-              <h1>{data?.[0].title2}</h1>
-              <p>{data?.[0].content}</p>
+          data && data.map(heroItem => {
+            if (heroItem.show) {
+              return (
+                <div className='heroContent'>
+                  <h3>{data?.[0].title1}</h3>
+                  <h1>{data?.[0].title2}</h1>
+                  <p>{data?.[0].content}</p>
 
-              <div className="button">
-                <div className="heroBtn">
-                  <Link to={'/'}>
-                    Reserve now
-                  </Link>
+                  <div className="button">
+                    <div className="heroBtn">
+                      <Link to={'/'}>
+                        Reserve now
+                      </Link>
+                    </div>
+                    <div className="PlayIconContainer">
+                      <Link to={'/'}>
+                        <CiPlay1 className='playIcon' />
+                        <span className="watchText">Watch our story</span>
+                      </Link>
+                    </div>
+                  </div>
                 </div>
-                <div className="PlayIconContainer">
-                  <Link to={'/'}>
-                    <CiPlay1 className='playIcon' />
-                    <span className="watchText">Watch our story</span>
-                  </Link>
-                </div>
-
-              </div>
-            </div>
-          </>
+              );
+            } else {
+              return null;
+            }
+          })
         }
         <div className="heroImage">
           <img src="/public/assets/spa.png" alt="" />
         </div>
-      </section>
+      </section >
     </>
   )
 }

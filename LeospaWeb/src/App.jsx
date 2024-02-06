@@ -14,11 +14,18 @@ import Login from './Pages/Login.jsx'
 //Admin Page Import
 import LayoutAdmin from './Layout/Admin/LayoutAdmin.jsx';
 import Dashboard from './Pages/Admin/Dashboard.jsx'
-import TeatmentAdmin from './Pages/Admin/TreatmentAdmin.jsx'
-import EditTreatmentAdmin from './Pages/Admin/EditTreatmentAdmin.jsx'
-
+import TeatmentAdmin from './Pages/Admin/Treatment/TreatmentAdmin.jsx'
+import EditTreatmentAdmin from './Pages/Admin/Treatment/EditTreatmentAdmin.jsx'
+import HeroAdmin from './Pages/Admin/Hero/HeroAdmin.jsx';
+import HeroEdit from './Pages/Admin/Hero/HeroEdit.jsx';
+import HeroCreate from './Pages/Admin/Hero/HeroCreate.jsx'
+import FooterEdit from './Pages/Admin/FooterEdit.jsx'
+import AboutAdmin from './Pages/Admin/About/AboutAdmin.jsx'
+import CreateTreatmentAdmin from './Pages/Admin/Treatment/CreateTreatmentAdmin.jsx';
 //Admin stylesheet
 import './Styles/Admin.scss'
+
+
 
 
 function App() {
@@ -37,7 +44,13 @@ function App() {
         <Route path='/admin/' element={<LayoutAdmin />} >
           <Route index element={<Dashboard />} />
           <Route path='treatment' element={<TeatmentAdmin />} />
+          <Route path='treatment/create' element={<CreateTreatmentAdmin />} />
           <Route path='treatment/:id' element={<EditTreatmentAdmin />} />
+          <Route path='hero' element={<HeroAdmin />} />
+          <Route path='hero/edit/:id' element={<HeroEdit />} />
+          <Route path='hero/create' element={<HeroCreate />} />
+          <Route path='about' element={<AboutAdmin />} />
+          <Route path='footer/edit' element={<FooterEdit />} />
         </Route>
 
 

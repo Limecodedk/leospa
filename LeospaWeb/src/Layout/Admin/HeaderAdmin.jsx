@@ -16,7 +16,7 @@ const HeaderAdmin = () => {
               <ul>
                 <li>
                   <Link to={'/admin'}>
-                    Home
+                    Dashboard
                   </Link>
                 </li>
                 <li>
@@ -30,7 +30,12 @@ const HeaderAdmin = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to={'/admin/footer'}>
+                  <Link to={'about'}>
+                    About
+                  </Link>
+                </li>
+                <li>
+                  <Link to={'footer/edit'}>
                     Footer
                   </Link>
                 </li>

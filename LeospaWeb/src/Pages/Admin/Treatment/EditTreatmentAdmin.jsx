@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import useRequestData from '../../hooks/useRequestData'
+import useRequestData from '../../../hooks/useRequestData'
 import { useParams } from 'react-router-dom';
 
 const EditTreatmentAdmin = () => {
@@ -14,27 +14,27 @@ const EditTreatmentAdmin = () => {
   }, [])
 
   const handleSubmit = async e => {
-    /* e.preventDefault();
+    e.preventDefault();
     let fd = new FormData(e.target)
-    await makeRequest("http://localhost:5029/treatment/" + id,
+    await makeRequest("http://localhost:5029/treatment/admin/" + id,
       {
         "Content-Type": "multipart/form-data"
       }, null, "PUT", fd
-    )*/
+    )
   }
 
   return (
     <>
-      <h1>Edit {data?.title} Treatment </h1>
-      {
-        data &&
-        <form action="" className="treatmentForm">
-          <input type="text" name="title" defaultValue={data.title} />
-          <textarea name="content" cols="30" rows="10" defaultValue={data.content}></textarea>
+      <section className='editSection'>
+        <h1>Edit {data?.title} Treatment </h1>
+
+        <form className="editForm" onSubmit={e => handleSubmit(e)}>
+          <input type="text" name="title" defaultValue={data?.title} />
+          <textarea name="content" cols="30" rows="10" defaultValue={data?.content}></textarea>
           <input type="file" name="image" />
-          <button type='submit' className='btn editBtn' onClick={handleSubmit}>Save</button>
+          <button type='submit' className='btn editBtn'>Save</button>
         </form>
-      }
+      </section>
     </>
   )
 }
