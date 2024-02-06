@@ -17,19 +17,21 @@ const About = () => {
   return (
     <>
       <section className='about'>
-        <div className='aboutImage'>
-          <img src="../../public/assets/butterfly.png" alt="" />
+        <div >
+          <img className="chinaRoseImage" src="/public/assets/china-rose.png" alt="" />
         </div>
         <div className="aboutContent">
+          <img className='aboutImage' src="../../public/assets/butterfly.png" alt="" />
           <h3>About our spa center</h3>
           <h2>{data?.title}</h2>
           <p>{data?.content}</p>
+          <Link to={'/features'} className="btn">
+            Read more
+          </Link>
         </div>
-        <Link to={'/features'} className="btn">
-          Read more
-        </Link>
-
-        <img className="aboutBgImg" src="/public/assets/jasmine.png" alt="" />
+        <div>
+          <img className="aboutJasminImg" src="/public/assets/jasmine.png" alt="" />
+        </div>
       </section>
     </>
   )

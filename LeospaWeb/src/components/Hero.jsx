@@ -16,7 +16,7 @@ const Hero = () => {
 
   return (
     <>
-      <section className='Hero'>
+      <section className='heroContainer'>
         <div className="heroLeaf">
           <img src="/public/assets/leaf.png" alt="" />
         </div>
@@ -24,31 +24,29 @@ const Hero = () => {
           data &&
           <>
             <div className='heroContent'>
-              <span>{data?.[0].title1}</span>
+              <h3>{data?.[0].title1}</h3>
               <h1>{data?.[0].title2}</h1>
               <p>{data?.[0].content}</p>
 
               <div className="button">
-                <div className="btn">
+                <div className="heroBtn">
                   <Link to={'/'}>
                     Reserve now
                   </Link>
                 </div>
-                <div className="btn">
+                <div className="PlayIconContainer">
                   <Link to={'/'}>
-                    <CiPlay1 className='playIcon' /> Watch our story
+                    <CiPlay1 className='playIcon' />
+                    <span className="watchText">Watch our story</span>
                   </Link>
                 </div>
+
               </div>
             </div>
           </>
         }
         <div className="heroImage">
           <img src="/public/assets/spa.png" alt="" />
-        </div>
-
-        <div className="chinaRoseImage">
-          <img src="/public/assets/china-rose.png" alt="" />
         </div>
       </section>
     </>
