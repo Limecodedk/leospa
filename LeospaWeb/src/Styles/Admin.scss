@@ -1,0 +1,65 @@
+/* 
+Admin Stylesheet
+*Dashboard
+
+*/
+
+// Import Variables
+@import 'variables';
+
+.adminDashboard {
+  width: 1100px;
+  margin: 0 auto;
+
+  .dashboardHeading {
+    margin: 1em 0;
+
+    h1 span {
+      font-size: 18px;
+    }
+  }
+
+  .dashboardSetingsContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: .5em;
+
+    .dashboardSetings {
+      padding: .4em;
+      border: 1px solid black;
+
+      h2 {
+        margin: .5em 0;
+
+        span {
+          font-size: .8rem;
+        }
+      }
+
+
+    }
+  }
+}
+
+.treamentAdminContainer {
+  display: flex;
+  justify-content: center;
+}
+
+/* Edit Treatment */
+.treatmentForm {
+  display: flex;
+  flex-direction: column;
+
+  input {
+    height: 35px;
+    margin: .5em 0;
+    outline: none;
+  }
+
+  .editBtn {
+    color: #fff;
+    width: 200px;
+    margin: 0 auto;
+  }
+}

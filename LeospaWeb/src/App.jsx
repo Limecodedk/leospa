@@ -1,7 +1,4 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './Styles/App.scss'
 import {
   Route,
   RouterProvider,
@@ -13,6 +10,15 @@ import Layout from './layout/Layout';
 import Home from './Pages/Home';
 import Features from './Pages/Features';
 import Services from './Pages/Services.jsx';
+import Login from './Pages/Login.jsx'
+//Admin Page Import
+import LayoutAdmin from './Layout/Admin/LayoutAdmin.jsx';
+import Dashboard from './Pages/Admin/Dashboard.jsx'
+import TeatmentAdmin from './Pages/Admin/TreatmentAdmin.jsx'
+import EditTreatmentAdmin from './Pages/Admin/EditTreatmentAdmin.jsx'
+
+//Admin stylesheet
+import './Styles/Admin.scss'
 
 
 function App() {
@@ -24,10 +30,15 @@ function App() {
           <Route index element={<Home />} />
           <Route path='/features' element={<Features />} />
           <Route path='/service' element={<Services />} />
-
+          <Route path='/login' element={<Login />} />
         </Route>
 
         {/* ADMIN */}
+        <Route path='/admin/' element={<LayoutAdmin />} >
+          <Route index element={<Dashboard />} />
+          <Route path='treatment' element={<TeatmentAdmin />} />
+          <Route path='treatment/:id' element={<EditTreatmentAdmin />} />
+        </Route>
 
 
       </>
