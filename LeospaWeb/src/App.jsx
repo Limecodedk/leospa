@@ -23,11 +23,13 @@ function App() {
         <Route path='/' element={<Layout />} >
           <Route index element={<Home />} />
           <Route path='/features' element={<Features />} />
-          <Route path='/Service' element={<Services />} />
+          <Route path='/service' element={<Services />} />
 
         </Route>
 
         {/* ADMIN */}
+
+
       </>
     )
   )

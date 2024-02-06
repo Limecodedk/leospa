@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 import useRequestData from '../hooks/useRequestData'
 import { Link } from 'react-router-dom';
+import parse from 'html-react-parser';
 
 const About = () => {
-
   const { data, isLoading, error, makeRequest } = useRequestData();
   const { data: dataService, isLoading: isLoadingService, error: errorService, makeRequest: makeRequestService } = useRequestData()
 
@@ -25,7 +25,7 @@ const About = () => {
           <h3>About our spa center</h3>
           <h2>{data?.title}</h2>
           <p>{data?.content}</p>
-          <Link to={'/features'} className="btn">
+          <Link to={'/features'} className="btn aboutBtn">
             Read more
           </Link>
         </div>

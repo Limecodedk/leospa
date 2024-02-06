@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react'
 import useRequestData from '../hooks/useRequestData'
+import parse from 'html-react-parser';
+import { Link } from 'react-router-dom';
 
 
 const truncateText = (text, maxLength) => {
@@ -42,8 +44,10 @@ const Treatments = () => {
             <div className="card" key={index}>
               <img className='treatmentsCardImage' src={`http://localhost:5029/images/treatment/${item.image}`} alt="" />
               <h2>{item.title}</h2>
-              <p>{truncateText(item.content, 15)}</p>
-              <a href="/services" className='btn treatmentsBtn'>Read more</a>
+              <p>{parse(truncateText(item.content, 15))}</p>
+              <Link to={'/service'} className='btn treatmentsBtn'>
+                Read more
+              </Link>
             </div>
           ))}
         </div>
