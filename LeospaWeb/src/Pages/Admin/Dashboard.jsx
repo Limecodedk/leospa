@@ -32,7 +32,7 @@ const Dashboard = () => {
               </span>
             </h2>
             {data?.slice(0, 5).map((item, index) => (
-              <Link to={"/admin/treatment/" + item._id}>
+              <Link to={"/admin/treatment/" + item._id} key={index}>
                 <h3>{item.title}</h3>
               </Link>
             ))}

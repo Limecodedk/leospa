@@ -3,26 +3,37 @@ import useRequestData from '../../../hooks/useRequestData'
 import { FaRegEdit } from "react-icons/fa";
 import { MdDeleteOutline } from "react-icons/md";
 import { Link } from 'react-router-dom';
+import Loader from '../../../components/Loader'
 
 const HeroAdmin = () => {
-  const [selectedHeroId, setSelectedHeroId] = useState('');
   const { data, isLoading, error, makeRequest } = useRequestData();
-  const { data: dataService, isLoading: isLoadingService, error: errorService, makeRequest: makeRequestService } = useRequestData()
-
+  const { data: dataDelete, isLoading: isLoadingDelete, error: errorDelete, makeRequest: makeRequestDelete } = useRequestData()
   useEffect(() => {
 
     makeRequest("http://localhost:5029/hero")
-    makeRequestService("http://localhost:5029/hero")
   }, [])
 
-
-  const handleHeroSelection = (heroId) => {
-    setSelectedHeroId(heroId);
+  const handleHeroSelection = async (id) => {
+    try {
+      const response = await fetch("http://localhost:5029/hero/admin/" + id, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": ""
+        },
+        body: null
+      });
+      if (response.ok) {
+        window.location.reload();
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
   }
+
 
   const handleDelete = (id, title) => {
     if (window.confirm("Are you sure you want to delete " + title + "?")) {
-      makeRequestDelete("http://localhost:5029/hero" + id,
+      makeRequestDelete("http://localhost:5029/hero/admin/" + id,
         {
         }, null, "DELETE")
     }
@@ -32,6 +43,8 @@ const HeroAdmin = () => {
     <>
       <section className='AdminTableContain'>
         <h1>Hero</h1>
+        {isLoading && <Loader />}
+        {error && <Error error={error} />}
         <table>
           <thead>
             <tr>
@@ -45,8 +58,7 @@ const HeroAdmin = () => {
             </tr>
           </thead>
           <tbody>
-
-            {data?.map((item, index) => (
+            {data && data.map((item, index) => (
               <tr key={index}>
                 <td>
                   <select name="activeHero" defaultValue={item.show} onChange={() => handleHeroSelection(item._id)}>
@@ -70,7 +82,8 @@ const HeroAdmin = () => {
                     onClick={() => handleDelete(item._id, item.title)} />
                 </td>
               </tr>
-            ))}
+            ))
+            }
           </tbody>
         </table>
         <div>

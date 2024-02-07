@@ -10,11 +10,21 @@ const FooterEdit = () => {
     makeRequest("http://localhost:5029/footer")
     makeRequestService("http://localhost:5029/footer")
   }, [])
+
+  const handleSubmit = async e => {
+    let fd = new FormData(e.target)
+    await makeRequest("http://localhost:5029/footer/admin/",
+      {
+        "Content-Type": "multipart/form-data"
+      }, null, "PUT", fd
+    )
+  }
+
   return (
     <>
       <section className='editSection'>
         <h1>Edit Footer</h1>
-        <form className="editForm">
+        <form className="editForm" onSubmit={handleSubmit}>
           <input type="text" name="name" defaultValue={data?.name} />
           <input type="number" name="cvr" defaultValue={data?.cvr} />
           <input type="text" name="address" defaultValue={data?.address} />

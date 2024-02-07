@@ -6,8 +6,6 @@ import { MdDeleteOutline } from "react-icons/md";
 import { Link } from 'react-router-dom';
 
 const Treatment = () => {
-  /*   const { data, isLoading, error, makeRequest } = useRequestData();
-    const { data: dataService, isLoading: isLoadingService, error: errorService, makeRequest: makeRequestService } = useRequestData() */
   const { data, isLoading, error, makeRequest } = useRequestData()
   const { data: dataDelete, isLoading: isLoadingDelete, error: errorDelete, makeRequest: makeRequestDelete } = useRequestData()
 

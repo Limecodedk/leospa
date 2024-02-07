@@ -16,7 +16,7 @@ const HeroCreate = () => {
   const handleSubmit = e => {
     e.preventDefault();
     let fd = new FormData(e.target)
-    makeRequest("http://localhost:5029/hero",
+    makeRequest("http://localhost:5029/hero/admin",
       {
         "Content-Type": ""
       }, null, "POST", fd
@@ -29,10 +29,6 @@ const HeroCreate = () => {
       <section className='createHero'>
         <h1>Create new Hero</h1>
         <form className="createHeroForm" onSubmit={e => handleSubmit(e)}>
-          <select name="activeHero">
-            <option value="true">Activate</option>
-            <option value="false">Deactivate</option>
-          </select>
           <input type="text" name="title1" placeholder='Subtitle' />
           <input type="text" name="title2" placeholder='Title' />
           <textarea name="content" cols="30" rows="10" placeholder='Content'></textarea>

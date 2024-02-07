@@ -14,13 +14,13 @@ const HeroEdit = () => {
   }, [])
 
   const handleSubmit = async e => {
-    /* e.preventDefault();
+    e.preventDefault();
     let fd = new FormData(e.target)
-    await makeRequest("http://localhost:5029/hero/" + id,
+    await makeRequest("http://localhost:5029/hero/admin/" + id,
       {
         "Content-Type": "multipart/form-data"
       }, null, "PUT", fd
-    )*/
+    )
   }
 
   return (
@@ -28,16 +28,12 @@ const HeroEdit = () => {
       <section className='editSection'>
         <h1>Edit {data?.title2} Hero </h1>
 
-        <form className="editForm">
-          <select name="activeHero" defaultValue={data?.show}>
-            <option value="true">Activate</option>
-            <option value="false">Deactivate</option>
-          </select>
-          <input type="text" name="title" defaultValue={data?.title1} />
-          <input type="text" name="title" defaultValue={data?.title2} />
+        <form className="editForm" onSubmit={handleSubmit}>
+          <input type="text" name="title1" defaultValue={data?.title1} />
+          <input type="text" name="title2" defaultValue={data?.title2} />
           <textarea name="content" cols="30" rows="10" defaultValue={data?.content}></textarea>
           <input type="text" name="link" defaultValue={data?.link} />
-          <button type='submit' className='btn editBtn' onClick={handleSubmit}>Save</button>
+          <button type='submit' className='btn editBtn'>Save</button>
         </form>
       </section>
     </>
