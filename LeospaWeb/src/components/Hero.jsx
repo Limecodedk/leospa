@@ -1,18 +1,32 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import useRequestData from '../hooks/useRequestData'
 import { Link } from 'react-router-dom';
 import { CiPlay1 } from "react-icons/ci";
 
 const Hero = () => {
-
+  const [videoOpen, setVideoOpen] = useState(false);
+  const [videoUrl, setVideoUrl] = useState('');
   const { data, isLoading, error, makeRequest } = useRequestData();
   const { data: dataService, isLoading: isLoadingService, error: errorService, makeRequest: makeRequestService } = useRequestData()
+
 
   useEffect(() => {
 
     makeRequest("http://localhost:5029/hero")
     makeRequestService("http://localhost:5029/hero?show=true")
   }, [])
+
+  const toggleVideo = (url) => {
+    setVideoUrl(url);
+    setVideoOpen(!videoOpen);
+  };
+
+  const handleWatchClick = (link, show) => {
+    if (show) {
+      toggleVideo(link);
+    }
+  };
+
 
   return (
     <>
@@ -38,12 +52,19 @@ const Hero = () => {
                       </Link>
                     </div>
                     <div className="PlayIconContainer">
-                      <Link to={heroItem.link}>
+                      <a href={heroItem?.link} >
                         <div className="iconContainer">
                           <CiPlay1 className='playIcon' />
                         </div>
                         <span className="watchText">Watch our story</span>
-                      </Link>
+                      </a>
+
+                      {/* <button onClick={() => handleWatchClick(heroItem.link, heroItem.show)}>
+                        <CiPlay1 className='playIcon' />
+                        <span className="watchText">Watch our story</span>
+                      </button> */}
+
+
                     </div>
                   </div>
                 </div>
@@ -57,6 +78,23 @@ const Hero = () => {
           <img src="/public/assets/spa.png" alt="Hero image" />
         </div>
       </section >
+      {/*   {videoOpen && (
+
+        < div className="videoModalOverlay" onClick={() => toggleVideo('')}>
+          <div className="videoModalContent">
+            {console.log(data?.[0].link)}
+            <iframe
+              width="560"
+              height="315"
+              src={data?.[0].link}
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            ></iframe>
+          </div>
+        </div >
+      )} */}
     </>
   )
 }
