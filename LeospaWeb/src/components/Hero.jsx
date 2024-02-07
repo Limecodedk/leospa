@@ -25,11 +25,11 @@ const Hero = () => {
             if (heroItem.show) {
               return (
                 <div className='heroContent' key={heroItem._id}>
-                  <h3 className='heroContentSubtitle'>{data?.[0].title1}</h3>
+                  <h3 className='heroContentSubtitle'>{heroItem.title1}</h3>
                   <h1>
-                    {data?.[0].title2}
+                    {heroItem.title2}
                   </h1>
-                  <p>{data?.[0].content}</p>
+                  <p>{heroItem.content}</p>
 
                   <div className="button">
                     <div className="heroBtn">
@@ -38,7 +38,7 @@ const Hero = () => {
                       </Link>
                     </div>
                     <div className="PlayIconContainer">
-                      <Link to={'/'}>
+                      <Link to={heroItem.link}>
                         <div className="iconContainer">
                           <CiPlay1 className='playIcon' />
                         </div>

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { FaRegEdit } from "react-icons/fa";
 import useRequestData from '../../hooks/useRequestData'
 import { Link } from 'react-router-dom';
+import NewssubscriptionAdmin from './Newssubscription/NewssubscriptionAdmin';
 
 
 const Dashboard = () => {
@@ -45,6 +46,10 @@ const Dashboard = () => {
           </div>
           <div className="dashboardSetings">
             <h2>Footer <span><Link to={'footer/edit'}><FaRegEdit /> Edit</Link></span></h2>
+          </div>
+          <div className="dashboardSetings twoCol">
+            <h2>News subscription <span><Link to={'newssubscription'}><FaRegEdit /> Edit</Link></span></h2>
+            <NewssubscriptionAdmin showHeader={false} numberOfItemsToShow={3} />
           </div>
         </div>
 
