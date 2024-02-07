@@ -22,6 +22,7 @@ import HeroCreate from './Pages/Admin/Hero/HeroCreate.jsx'
 import FooterEdit from './Pages/Admin/FooterEdit.jsx'
 import AboutAdmin from './Pages/Admin/About/AboutAdmin.jsx'
 import CreateTreatmentAdmin from './Pages/Admin/Treatment/CreateTreatmentAdmin.jsx';
+import NewssubscriptionAdmin from './Pages/Admin/Newssubscription/NewssubscriptionAdmin.jsx'
 //Admin stylesheet
 import './Styles/Admin.scss'
 
@@ -51,6 +52,7 @@ function App() {
           <Route path='hero/create' element={<HeroCreate />} />
           <Route path='about' element={<AboutAdmin />} />
           <Route path='footer/edit' element={<FooterEdit />} />
+          <Route path='newssubscription' element={<NewssubscriptionAdmin />} />
         </Route>
 
 

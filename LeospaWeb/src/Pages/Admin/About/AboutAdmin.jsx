@@ -1,10 +1,9 @@
-import React, { useEffect } from 'react'
-import useRequestData from '../../../hooks/useRequestData'
-
+import React, { useEffect } from 'react';
+import useRequestData from '../../../hooks/useRequestData';
 
 const AboutAdmin = () => {
   const { data, isLoading, error, makeRequest } = useRequestData();
-  const { data: dataService, isLoading: isLoadingService, error: errorService, makeRequest: makeRequestService } = useRequestData()
+  const { data: dataService, isLoading: isLoadingService, error: errorService, makeRequest: makeRequestService } = useRequestData();
 
   useEffect(() => {
 
@@ -21,6 +20,7 @@ const AboutAdmin = () => {
       }, null, "PUT", fd
     )
   }
+
 
   return (
     <section className='editSection'>

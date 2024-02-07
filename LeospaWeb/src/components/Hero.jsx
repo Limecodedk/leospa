@@ -18,15 +18,17 @@ const Hero = () => {
     <>
       <section className='heroContainer'>
         <div className="heroLeaf">
-          <img src="/public/assets/leaf.png" alt="" />
+          <img src="/public/assets/leaf.png" alt="Hero bg left image" />
         </div>
         {
           data && data.map(heroItem => {
             if (heroItem.show) {
               return (
-                <div className='heroContent'>
-                  <h3>{data?.[0].title1}</h3>
-                  <h1>{data?.[0].title2}</h1>
+                <div className='heroContent' key={heroItem._id}>
+                  <h3 className='heroContentSubtitle'>{data?.[0].title1}</h3>
+                  <h1>
+                    {data?.[0].title2}
+                  </h1>
                   <p>{data?.[0].content}</p>
 
                   <div className="button">
@@ -37,7 +39,9 @@ const Hero = () => {
                     </div>
                     <div className="PlayIconContainer">
                       <Link to={'/'}>
-                        <CiPlay1 className='playIcon' />
+                        <div className="iconContainer">
+                          <CiPlay1 className='playIcon' />
+                        </div>
                         <span className="watchText">Watch our story</span>
                       </Link>
                     </div>
@@ -50,7 +54,7 @@ const Hero = () => {
           })
         }
         <div className="heroImage">
-          <img src="/public/assets/spa.png" alt="" />
+          <img src="/public/assets/spa.png" alt="Hero image" />
         </div>
       </section >
     </>

@@ -40,11 +40,11 @@ const Services = () => {
             <div className="treatmentCard" key={index}>
               <h2>{cardItem.title}</h2>
               <img className='treatmentCardImage' src={`http://localhost:5029/images/treatment/${cardItem.image}`} alt="" />
-              <p>
+              <div>
                 {expandedCards[index]
                   ? parse(cardItem.content)
                   : parse(limitWords(cardItem.content, 20))}
-              </p>
+              </div>
               {cardItem.content.split(' ').length > 20 && (
                 <button onClick={() => toggleCard(index)} className='btn serviceCardBtn'>
                   {expandedCards[index] ? "Vis mindre" : "Læs mere"}

@@ -1,5 +1,9 @@
 import React, { useEffect } from 'react'
 import useRequestData from '../hooks/useRequestData'
+import { FaFacebookF } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+import { FaGooglePlusG } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
 
 const Team = () => {
   const { data, isLoading, error, makeRequest } = useRequestData();
@@ -22,11 +26,29 @@ const Team = () => {
         {data?.map((item, index) => (
           <div className="teamCard" key={index}>
             <div className='teamCardImage'>
-              <img src={`http://localhost:5029/images/team/${item.image}`} alt="" />
+              <img src={`http://localhost:5029/images/team/${item.image}`} alt="LeoSpa team profile image" />
             </div>
             <div className='teamCardContent'>
-              <h2>{item.firstname} {item.lastname}</h2>
-              <h3>{item.role}</h3>
+              <div>
+                <h2>{item.firstname} {item.lastname}</h2>
+                <p>{item.role}</p>
+                <div className="socialIconContainer">
+                  <div className="socialIcon">
+                    <a href="/"><FaFacebookF /></a>
+                  </div>
+                  <div className="socialIcon">
+                    <a href="/"><FaXTwitter /></a>
+                  </div>
+                  <div className="socialIcon">
+                    <a href="/"><FaGooglePlusG /></a>
+                  </div>
+                  <div className="socialIcon">
+                    <a href="/">
+                      <FaInstagram />
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         ))}

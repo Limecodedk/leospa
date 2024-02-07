@@ -24,6 +24,8 @@ const About = () => {
           <img className='aboutImage' src="../../public/assets/butterfly.png" alt="" />
           <h3>About our spa center</h3>
           <h2>{data?.title}</h2>
+          {/* <p>{parse(data?.content)}</p> */}
+          {/* <p>{parse(data?.content.toString())}</p> */}
           <p>{data?.content}</p>
           <Link to={'/features'} className="btn aboutBtn">
             Read more

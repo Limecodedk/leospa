@@ -6,11 +6,9 @@ import { Link } from 'react-router-dom';
 
 const truncateText = (text, maxLength) => {
   const words = text.split(' ');
-
   if (words.length > maxLength) {
     return words.slice(0, maxLength).join(' ') + '...';
   }
-
   return text;
 };
 
@@ -30,8 +28,14 @@ const Treatments = () => {
       <section className='treatments'>
         <div className="treatmentsContainer">
           {data?.slice(0, 4).map((item, index) => (
-            <div className="treatmentsImageContainer" key={index} >
-              <img className='treatmentsImage' src={`http://localhost:5029/images/treatment/${item.image}`} alt="" />
+            <div className="treatmentsImageContainer" key={index}>
+              <div className="overlay">
+                <div className="overlayContent">
+                  <img src="/public/assets/icons/1.png" alt="Treatments Overlay Image" className="overlayImage" />
+                  <p>Body Treatment</p>
+                </div>
+              </div>
+              <img className='treatmentsImage' src={`http://localhost:5029/images/treatment/${item.image}`} alt="treatments image" />
             </div>
           ))}
         </div>
@@ -42,17 +46,15 @@ const Treatments = () => {
         <div className="treatmentsCardContainer">
           {data?.slice(0, 3).map((item, index) => (
             <div className="card" key={index}>
-              <img className='treatmentsCardImage' src={`http://localhost:5029/images/treatment/${item.image}`} alt="" />
+              <img className='treatmentsCardImage' src={`http://localhost:5029/images/treatment/${item.image}`} alt="treatments" />
               <h2>{item.title}</h2>
-              <p>{parse(truncateText(item.content, 15))}</p>
+              {parse(truncateText(item.content, 15))}
               <Link to={'/service'} className='btn treatmentsBtn'>
                 Read more
               </Link>
             </div>
           ))}
         </div>
-
-
       </section>
     </>
   )

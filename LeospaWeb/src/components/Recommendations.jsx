@@ -19,6 +19,7 @@ const Recommendations = () => {
     dots: true,
     infinite: true,
     speed: 500,
+    autoplay: true,
     slidesToShow: 1,
     slidesToScroll: 1,
   };
@@ -34,7 +35,7 @@ const Recommendations = () => {
             <div key={index} className="RecommendationsSlider">
               <p>{item.content}</p>
               <img src={`http://localhost:5029/images/recommendation/${item.image}`} alt="" />
-              <h2>{item.name}, {item.title}</h2>
+              <h2>{item.name}, <span>{item.title}</span></h2>
             </div>
           ))}
 

@@ -6,6 +6,7 @@ import { FaFacebookF, FaVimeoV, FaInstagram, FaPhoneAlt } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { MdOutlinePlace } from "react-icons/md";
 import { IoMailOutline } from "react-icons/io5";
+import Newssubscription from '../components/Newssubscription';
 
 
 
@@ -27,6 +28,7 @@ const Footer = () => {
           <img src="/public/assets/logo.png" alt="" />
         </div>
         <nav className='navbar'>
+          <Newssubscription />
           <ul>
             <li>
               <Link to={'/'}>

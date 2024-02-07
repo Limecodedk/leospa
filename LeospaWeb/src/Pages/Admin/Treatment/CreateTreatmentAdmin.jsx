@@ -2,14 +2,16 @@ import React, { useEffect } from 'react'
 import useRequestData from '../../../hooks/useRequestData'
 
 const CreateTreatmentAdmin = () => {
-  const { data, isLoading, error, makeRequest } = useRequestData();
-  const { data: dataService, isLoading: isLoadingService, error: errorService, makeRequest: makeRequestService } = useRequestData()
+  /*   const { data, isLoading, error, makeRequest } = useRequestData();
+    const { data: dataService, isLoading: isLoadingService, error: errorService, makeRequest: makeRequestService } = useRequestData()
+  
+    useEffect(() => {
+  
+      makeRequest("http://localhost:5029/treatment")
+      makeRequestService("http://localhost:5029/treatment")
+    }, []) */
 
-  useEffect(() => {
-
-    makeRequest("http://localhost:5029/treatment")
-    makeRequestService("http://localhost:5029/treatment")
-  }, [])
+  const { data, isLoading, error, makeRequest } = useRequestData()
 
   const handleSubmit = e => {
     e.preventDefault();
