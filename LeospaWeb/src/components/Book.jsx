@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react'
+import useRequestData from '../hooks/useRequestData'
 
+/* Validate */
 const validateForm = () => {
   const name = document.forms["bookForm"]["name"].value;
   const email = document.forms["bookForm"]["email"].value;
-  const service = document.forms["bookForm"]["service"].value;
+  const service = document.forms["bookForm"]["treatment"].value;
   const phone = document.forms["bookForm"]["phone"].value;
   const date = document.forms["bookForm"]["date"].value;
   const time = document.forms["bookForm"]["time"].value;
@@ -35,7 +37,17 @@ const validateForm = () => {
   return true;
 }
 
+
 const Book = () => {
+  const { data, isLoading, error, makeRequest } = useRequestData();
+  const { data: dataService, isLoading: isLoadingService, error: errorService, makeRequest: makeRequestService } = useRequestData()
+
+  useEffect(() => {
+
+    makeRequest("http://localhost:5029/appointment/admin")
+    makeRequestService("http://localhost:5029/appointment/admin")
+  }, [])
+
   useEffect(() => {
     const today = new Date();
     const tomorrow = new Date(today);
@@ -60,6 +72,14 @@ const Book = () => {
         formObject[key] = value;
       });
       console.log("formData successfully validated!!", formObject);
+
+      let fd = new FormData(event.target)
+      makeRequest("http://localhost:5029/appointment/",
+        {
+          "Content-Type": ""
+        }, null, "POST", fd
+      )
+      event.target.reset()
     }
   };
 
@@ -72,10 +92,10 @@ const Book = () => {
         <form name="bookForm" onSubmit={handleSubmit} className='bookForm'>
           <input type="text" name="name" placeholder='NAME' />
           <input type="email" name='email' placeholder='EMAIL ADDRESS' />
-          <select name="service" defaultValue="massage">
+          <select name="treatment" defaultValue="massage">
             <option value="massage">SELECT SERVICE</option>
-            <option value="hair">Hair</option>
-            <option value="waxing">Waxing</option>
+            <option value="607b505b2bb5b518589e4d1f">SPA Massage</option>
+            <option value="607b4e662bb5b518589e4d1d">Waxing</option>
           </select>
           <input type="tel" name="phone" placeholder='PHONE NUMBER' />
           <input type="date" name="date" />

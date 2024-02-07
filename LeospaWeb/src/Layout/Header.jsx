@@ -26,13 +26,13 @@ const Header = () => {
                 </Link>
               </li>
               <li>
-                <Link to={'/features'}>
-                  Feature
+                <Link to={'/Service'}>
+                  Service
                 </Link>
               </li>
               <li>
-                <Link to={'/Service'}>
-                  Service
+                <Link to={'/features'}>
+                  Feature
                 </Link>
               </li>
               <li>
