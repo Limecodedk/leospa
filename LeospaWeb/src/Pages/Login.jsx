@@ -40,7 +40,7 @@ const Login = () => {
       <div className="loginContainer">
         <div className="loginHeader">
           <div className="loginImage">
-            <img src="/public/assets/china-rose.png" alt="" />
+            <img src="/public/assets/china-rose.png" alt="rose flower icon" />
           </div>
           <div className='loginHeading'>
             <h1>Login</h1>

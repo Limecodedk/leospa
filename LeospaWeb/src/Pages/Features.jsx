@@ -67,7 +67,7 @@ const Features = () => {
         <div className="eventsContainer">
           {eventsData.map((item, index) => (
             <div className="eventCard" key={index}>
-              <img src={item.image} alt="" />
+              <img src={item.image} alt="Events picture" />
               <h2>{item.title}</h2>
               <p className='featuresContent'>{item.text}</p>
               <div className="signup">

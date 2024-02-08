@@ -26,9 +26,6 @@ import NewssubscriptionAdmin from './Pages/Admin/Newssubscription/Newssubscripti
 //Admin stylesheet
 import './Styles/Admin.scss'
 
-
-
-
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -54,12 +51,9 @@ function App() {
           <Route path='footer/edit' element={<FooterEdit />} />
           <Route path='newssubscription' element={<NewssubscriptionAdmin />} />
         </Route>
-
-
       </>
     )
   )
-
   return (
     <>
       <main className='container'>

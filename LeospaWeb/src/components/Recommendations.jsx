@@ -22,6 +22,14 @@ const Recommendations = () => {
     autoplay: true,
     slidesToShow: 1,
     slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 425,
+        settings: {
+          slidesToShow: 1,
+        }
+      }
+    ]
   };
 
   return (
@@ -34,7 +42,7 @@ const Recommendations = () => {
           {data?.map((item, index) => (
             <div key={index} className="RecommendationsSlider">
               <p>{item.content}</p>
-              <img src={`http://localhost:5029/images/recommendation/${item.image}`} alt="" />
+              <img src={`http://localhost:5029/images/recommendation/${item.image}`} alt="Recommendations profile picture " />
               <h2>{item.name}, <span>{item.title}</span></h2>
             </div>
           ))}

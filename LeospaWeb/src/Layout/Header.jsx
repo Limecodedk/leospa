@@ -1,51 +1,39 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-
-
+import { RxHamburgerMenu } from "react-icons/rx";
+import NavbarMobile from './Nav/NavbarMobile';
+import NavbarDesktop from './Nav/NavbarDesktop';
 
 const Header = () => {
+  const [navbar, setNavbar] = useState(false)
+  const isSmallScreen = window.innerWidth <= 425;
+  const handleNavbarClose = () => {
+    setNavbar(false)
+  };
+
   return (
     <>
-      <header className="header">
+      <header className="header mobileHeader">
         <div className="logo">
           <Link to={'/'}>
             <img src="/public/assets/logo.png" alt="" />
           </Link>
         </div>
-        <nav className='navbar'>
-          <ul>
-            <ul>
-              <li>
-                <Link to={'/'}>
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link to={'/'}>
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link to={'/Service'}>
-                  Service
-                </Link>
-              </li>
-              <li>
-                <Link to={'/features'}>
-                  Feature
-                </Link>
-              </li>
-              <li>
-                <Link to={'/'}>
-                  Contact
-                </Link>
-              </li>
-            </ul>
-          </ul>
-        </nav>
+        {isSmallScreen ? (
+          <div onClick={() => setNavbar(!navbar)}
+            className='navIcon'>
+            <RxHamburgerMenu />
+          </div>
+        ) : (
+          <NavbarDesktop />
+        )}
+        <div className={`nav-container ${navbar ? 'open' : 'closed'}`}>
+          {isSmallScreen ? <NavbarMobile onCloseNav={handleNavbarClose} /> : null}
+        </div>
       </header>
     </>
   )
 }
 
 export default Header
+

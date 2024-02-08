@@ -52,19 +52,12 @@ const Hero = () => {
                       </Link>
                     </div>
                     <div className="PlayIconContainer">
-                      <a href={heroItem?.link} >
+                      <a href="#" onClick={() => handleWatchClick(heroItem.link, heroItem.show)} >
                         <div className="iconContainer">
                           <CiPlay1 className='playIcon' />
                         </div>
                         <span className="watchText">Watch our story</span>
                       </a>
-
-                      {/* <button onClick={() => handleWatchClick(heroItem.link, heroItem.show)}>
-                        <CiPlay1 className='playIcon' />
-                        <span className="watchText">Watch our story</span>
-                      </button> */}
-
-
                     </div>
                   </div>
                 </div>
@@ -78,14 +71,12 @@ const Hero = () => {
           <img src="/public/assets/spa.png" alt="Hero image" />
         </div>
       </section >
-      {/*   {videoOpen && (
+      {videoOpen && (
 
         < div className="videoModalOverlay" onClick={() => toggleVideo('')}>
           <div className="videoModalContent">
             {console.log(data?.[0].link)}
             <iframe
-              width="560"
-              height="315"
               src={data?.[0].link}
               title="YouTube video player"
               frameBorder="0"
@@ -94,7 +85,7 @@ const Hero = () => {
             ></iframe>
           </div>
         </div >
-      )} */}
+      )}
     </>
   )
 }

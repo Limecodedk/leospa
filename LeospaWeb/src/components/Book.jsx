@@ -86,7 +86,7 @@ const Book = () => {
   return (
     <section className='bookContainer'>
       <div className="bookImage">
-        <img src="/public/assets/appointment-img.jpg" alt="" />
+        <img src="/public/assets/appointment-img.jpg" alt="woman getting scalp massage" />
       </div>
       <div className="bookFormContainer">
         <form name="bookForm" onSubmit={handleSubmit} className='bookForm'>

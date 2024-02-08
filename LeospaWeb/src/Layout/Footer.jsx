@@ -1,15 +1,21 @@
 import React, { useEffect } from 'react'
-import useRequestData from '../hooks/useRequestData'
 import { Link } from 'react-router-dom';
+import useRequestData from '../hooks/useRequestData'
+import Newssubscription from '../components/Newssubscription';
 /* Import icons */
 import { FaFacebookF, FaVimeoV, FaInstagram, FaPhoneAlt } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { MdOutlinePlace } from "react-icons/md";
 import { IoMailOutline } from "react-icons/io5";
-import Newssubscription from '../components/Newssubscription';
 
 
-
+const NavLink = [
+  { text: "Home", to: "/" },
+  { text: "About", to: "/" },
+  { text: "Service", to: "/Service" },
+  { text: "Feature", to: "/features" },
+  { text: "Contact", to: "/" }
+];
 
 const Footer = () => {
   const { data, isLoading, error, makeRequest } = useRequestData();
@@ -36,36 +42,15 @@ const Footer = () => {
             <a href={`mailto:${data?.email}`} className='footerContactInfo'><IoMailOutline /> Email: {data?.email}</a>
           </div>
           <div>
-            {/*       <div className='footerImage'>
-              <img src="/public/assets/logo.png" alt="LeoSpa logo" />
-            </div> */}
-            <nav className='navbar'>
+            <nav className='navbar mobileNavbar'>
               <ul>
-                <li>
-                  <Link to={'/'}>
-                    Home
-                  </Link>
-                </li>
-                <li>
-                  <Link to={'/'}>
-                    About
-                  </Link>
-                </li>
-                <li>
-                  <Link to={'/features'}>
-                    Feature
-                  </Link>
-                </li>
-                <li>
-                  <Link to={'/Service'}>
-                    Service
-                  </Link>
-                </li>
-                <li>
-                  <Link to={'/'}>
-                    Contact
-                  </Link>
-                </li>
+                {NavLink.map((item, index) => (
+                  <li key={index}>
+                    <Link to={item.to}>
+                      {item.text}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </nav>
             <div className='footerSocial'>
@@ -83,19 +68,15 @@ const Footer = () => {
               </a>
             </div>
           </div>
-
-
           <div className="Newsletter">
             <Newssubscription />
           </div>
         </div>
-
         <div className="copyright">
           &#169;Copyright 2019 themeies.com all rights reserved.
         </div>
       </div>
     </footer>
-
   )
 }
 

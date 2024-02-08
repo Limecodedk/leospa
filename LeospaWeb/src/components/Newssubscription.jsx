@@ -1,7 +1,22 @@
 import React, { useState } from 'react'
 
+const validateForm = () => {
+  const name = document.forms["subscriptionForm"]["name"].value;
+  const email = document.forms["subscriptionForm"]["email"].value;
+
+  errorMessage.textContent = "";
+
+  if (name === "" || email === "") {
+    errorMessage.textContent = "Please fill in all required fields.";
+    return false;
+  }
+
+  return true;
+}
+
 const Newssubscription = () => {
   const [isUnsubscribed, setIsUnsubscribed] = useState(false);
+  const [isSubscribe, setIsSubscribe] = useState(false);
 
 
   const handleSubmit = async e => {
@@ -12,23 +27,27 @@ const Newssubscription = () => {
 
     try {
       let response;
-      if (unsubscribe) {
-        formData.append('email', email);
-        response = await fetch(`http://localhost:5029/newssubscription/afmeld`, {
-          method: "DELETE",
-          body: formData
-        });
-      } else {
-        response = await fetch(`http://localhost:5029/newssubscription`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({ name: formData.get('name'), email })
-        });
+      if (validateForm()) {
+        if (unsubscribe) {
+          formData.append('email', email);
+          response = await fetch(`http://localhost:5029/newssubscription/afmeld`, {
+            method: "DELETE",
+            body: formData
+          });
+        } else {
+          response = await fetch(`http://localhost:5029/newssubscription`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ name: formData.get('name'), email })
+          });
+        }
       }
 
       if (response.ok) {
+        setIsSubscribe(true);
+        window.location.reload();
       } else {
         console.error("Failed to make the request:", response.statusText);
       }
@@ -41,7 +60,7 @@ const Newssubscription = () => {
 
   return (
     <>
-      <form className='newssubscription' onSubmit={e => handleSubmit(e)}>
+      <form className='newssubscription' name='subscriptionForm' onSubmit={e => handleSubmit(e)}>
         <div className="inputContainer">
           <input type="text" name="name" placeholder='Your name' required />
           <input type="email" name="email" placeholder='Your Email' required />
@@ -58,7 +77,9 @@ const Newssubscription = () => {
           </div>
           <button type='submit'>Submit</button>
         </div>
+        <p id="errorMessage" style={{ color: 'red', fontSize: '0.8rem' }}></p>
       </form>
+      {isSubscribe && <p>Success you subscribe now!</p>}
     </>
   )
 }

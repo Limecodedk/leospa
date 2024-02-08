@@ -43,7 +43,7 @@ const Services = () => {
         <div className="treatmentCardContainer">
           {data?.map((cardItem, index) => (
             <div className="treatmentCard" key={index}>
-              <img className='treatmentCardImage' src={`http://localhost:5029/images/treatment/${cardItem.image}`} alt="" />
+              <img className='treatmentCardImage' src={`http://localhost:5029/images/treatment/${cardItem.image}`} alt="treatment product images" />
               <div className='treatmentCardContent'>
                 <h2>{cardItem.title}</h2>
                 {expandedCards[index]

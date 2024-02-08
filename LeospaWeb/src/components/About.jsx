@@ -18,10 +18,10 @@ const About = () => {
     <>
       <section className='about'>
         <div >
-          <img className="chinaRoseImage" src="/public/assets/china-rose.png" alt="" />
+          <img className="chinaRoseImage" src="/public/assets/china-rose.png" alt="Rose flower icon" />
         </div>
         <div className="aboutContent">
-          <img className='aboutImage' src="../../public/assets/butterfly.png" alt="" />
+          <img className='aboutImage' src="../../public/assets/butterfly.png" alt="Butterfly icon" />
           <h3>About our spa center</h3>
           <h2>{data?.title}</h2>
           {/* <p>{parse(data?.content)}</p> */}
@@ -32,7 +32,7 @@ const About = () => {
           </Link>
         </div>
         <div>
-          <img className="aboutJasminImg" src="/public/assets/jasmine.png" alt="" />
+          <img className="aboutJasminImg" src="/public/assets/jasmine.png" alt="Jasmine flower icon" />
         </div>
       </section>
     </>

@@ -1,9 +1,11 @@
 /* 
+*Table of Contents *
 *Global
 *header
 -Navbar
 *HomePage:
 -Hero
+-Video modal
 -About
 -Treatments
 -Recommendations
@@ -18,6 +20,7 @@
 *LoginPage:
 -login
 *Newsletter
+*Responsivt
 */
 
 
@@ -30,7 +33,6 @@
   src: url('../fonts/themify.eot');
   src: local('themify'), url('../fonts//themify.woff') format('woff'), url('../fonts/themify.ttf') format('truetype');
 }
-
 
 
 // Import Variables
@@ -94,6 +96,7 @@ h3 {
   margin: 0 auto;
   width: 820px;
   gap: 20%;
+  justify-content: flex-start;
 
 
   .headerContainer {
@@ -116,6 +119,11 @@ h3 {
 
     li {
       list-style-type: none;
+
+      & a:hover {
+        color: red;
+      }
+
     }
 
   }
@@ -125,7 +133,6 @@ h3 {
 /* 
 *HomePage
 */
-
 /* Hero */
 .heroContainer {
   display: grid;
@@ -226,12 +233,28 @@ h3 {
       width: 100%;
     }
   }
+}
 
+/* Video modal */
+.videoModalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.899);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
 
+  iframe {
+    width: 560px;
+    height: 315px;
+  }
 }
 
 /* About */
-
 .about {
   display: grid;
   grid-template-columns: 20vw 60vw 10vw;
@@ -283,6 +306,10 @@ h3 {
 
   .aboutBtn {
     --btn-color: #fff;
+
+    &:hover {
+      --btn-color: #272727;
+    }
   }
 }
 
@@ -633,6 +660,10 @@ h3 {
       svg {
         margin: 0 10px;
       }
+
+      & a:hover {
+        color: $red;
+      }
     }
   }
 }
@@ -646,7 +677,6 @@ h3 {
 
 /* 
 *Service Page*/
-
 .serviceContainer {
   margin: 5em 0;
 
@@ -723,8 +753,6 @@ h3 {
     }
   }
 }
-
-
 
 /* 
 *FeaturePage */
@@ -940,6 +968,616 @@ h3 {
       border: none;
       color: $white;
       border-radius: 10px;
+    }
+  }
+}
+
+/* 
+*Responsivt */
+/* Tablet 768px */
+@media screen and (max-width: 768px) {
+
+  /* 
+*Navbar
+*/
+  .header {
+    width: 100%;
+    gap: 5%;
+
+    .logo {
+      margin-left: 4em;
+
+      img {
+        height: 45px;
+      }
+    }
+  }
+
+  /*
+*HomePage
+*/
+  /* Hero */
+
+  .heroContainer {
+    .heroContent {
+      width: 340px;
+
+      h1 {
+        font-size: 1.2rem;
+      }
+    }
+
+    .heroLeaf {
+      img {
+        height: 220px;
+      }
+    }
+
+    .heroImage {
+      img {
+        height: 280px;
+      }
+    }
+  }
+
+  /* Treatments */
+  .treatments {
+    h2 {
+      font-size: 1.2rem;
+    }
+
+    .treatmentsContainer {
+      position: relative;
+      margin: 2em 0;
+      display: flex;
+      flex-direction: row;
+      gap: .4em;
+    }
+
+    .treatmentsCardContainer {
+      max-width: 700px;
+
+      .card {
+        .treatmentsCardImage {
+          height: 200px;
+          width: 180px;
+        }
+      }
+    }
+  }
+
+  /* Recommendations */
+  .RecommendationsContainer {
+    .RecommendationsSlider {
+
+      h2,
+      p {
+        width: 500px;
+      }
+
+      span {
+        font-size: .9rem;
+      }
+    }
+  }
+
+  /* TEAM */
+  .teamSection {
+    max-width: 600px;
+
+    h2 {
+      font-size: 1.3rem;
+    }
+
+    p {
+      font-size: .8rem;
+      line-height: 1rem
+    }
+  }
+
+  /* BOOKING */
+  .bookContainer {
+    flex-direction: column;
+
+    .bookImage {
+      margin: 0 auto;
+
+      img {
+        height: 370px;
+        width: 450px;
+      }
+    }
+
+    .bookFormContainer {
+      .bookForm {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1em;
+
+        .btn-book {
+          grid-column: 1/-1;
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+
+  /* FOOTER */
+  .footerContainer {
+    .rowTwo {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  /*
+  *Service Page*/
+  .serviceContainer {
+    .treatmentCardContainer {
+      max-width: 700px;
+    }
+
+    .treatmentCard {
+      h2 {
+        font-size: 1.3rem;
+      }
+
+      p {
+        font-size: .9rem;
+      }
+    }
+  }
+
+  /*
+  *FeaturePage */
+
+  .featuresSection {
+    .eventsContainer {
+      max-width: 650px;
+      grid-template-columns: repeat(2, 1fr);
+
+    }
+  }
+}
+
+/* Phone 425px */
+@media screen and (max-width: 425px) {
+
+  /* 
+*Navbar
+*/
+  .header {
+    justify-content: space-between;
+    width: 100%;
+
+    .logo {
+      margin: 1em;
+    }
+
+  }
+
+  .nav-container {
+    position: absolute;
+    top: 6%;
+    left: auto;
+    max-height: 0;
+    width: 100%;
+    overflow-x: auto;
+    display: block;
+    transition: max-height 0.3s ease;
+    background-color: $bg;
+  }
+
+  .navIcon {
+    display: flex;
+    justify-content: flex-end;
+    padding: 15px 40px;
+
+    svg {
+      font-size: 30px;
+      color: $modalBg
+    }
+  }
+
+  .nav-container.open {
+    max-height: 260px;
+  }
+
+  .closeNav {
+    display: flex;
+
+    svg {
+
+      color: $white;
+      font-size: 1.5rem;
+    }
+  }
+
+  .navbarMobile {
+
+    li {
+      list-style-type: none;
+      padding: 5px 0;
+      text-align: center;
+    }
+
+    li a {
+      text-decoration: none;
+
+      font-size: 23px;
+
+    }
+  }
+
+  /* 
+*HomePage
+*/
+  /* Hero */
+  .heroContainer {
+    grid-template-rows: 1fr 0.2fr;
+
+    .heroContent {
+      padding-left: 1em;
+
+      h1 {
+        font-size: 2.7rem;
+        font-weight: 300;
+      }
+
+      p {
+        line-height: 1.4rem;
+        font-size: 1rem;
+      }
+
+      h1,
+      p {
+        padding: 5px 0;
+
+      }
+    }
+
+    .button {
+      display: flex;
+      flex-direction: column;
+      gap: .5em;
+      margin-top: 1.5rem;
+    }
+
+    .heroBtn {
+      width: 150px;
+      margin: 2em 0;
+    }
+
+    .PlayIconContainer {
+      justify-content: flex-start;
+
+      a {
+        font-size: 1rem;
+      }
+    }
+
+
+    .heroLeaf {
+      img {
+        height: 98px;
+      }
+    }
+
+    .heroImage {
+      display: none;
+    }
+  }
+
+  /* Video modal */
+  .videoModalOverlay {
+    iframe {
+      width: 300px;
+      height: 250px;
+    }
+  }
+
+  /* About */
+  .about {
+    display: flex;
+    flex-direction: column;
+    margin: 0 2em;
+
+    .chinaRoseImage {
+      top: -20%;
+      left: 5%;
+    }
+
+    .aboutJasminImg {
+      display: none;
+    }
+  }
+
+  /* Treatments */
+  .treatments {
+
+    h2 {
+      font-size: 2rem;
+    }
+
+    p {
+      padding: 0 10px;
+    }
+
+    .treatmentsContainer {
+      flex-direction: column;
+
+      .treatmentsImageContainer:not(:first-child) {
+        display: none;
+      }
+    }
+
+    .treatmentsCardContainer {
+      display: flex;
+      flex-direction: column;
+      max-width: 300px;
+
+      .card {
+        .treatmentsCardImage {
+          height: 250px;
+          width: 100%;
+        }
+      }
+    }
+
+    .treatmentsBtn {
+      width: 80%;
+    }
+  }
+
+  /* Recommendations */
+  .RecommendationsContainer {
+    .RecommendationsSlider {
+      margin: 25px 0;
+
+      h2,
+      p {
+        width: 100%;
+        text-align: center;
+      }
+
+      p {
+        line-height: 1.6rem;
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  /* TEAM */
+  .teamSection {
+    max-width: 600px;
+
+    h2 {
+      font-size: 1.3rem;
+    }
+
+    p {
+      font-size: .8rem;
+      line-height: 1rem
+    }
+
+    .teamCardContainer {
+      flex-direction: column;
+
+      .teamCard {
+        margin: 2em;
+      }
+    }
+  }
+
+  /* BOOKING */
+  .bookContainer {
+    flex-direction: column;
+
+    .bookImage {
+      display: none;
+    }
+
+    .bookFormContainer {
+      .bookForm {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+
+        .btn-book {
+          grid-column: 1/-1;
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+
+  /* Footer */
+  .mobileNavbar {
+    display: none;
+  }
+
+  /*
+  *Service Page*/
+  .serviceContainer {
+    .treatmentCardContainer {
+      grid-template-columns: repeat(2, 1fr);
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .treatmentCard {
+      h2 {
+        font-size: 1rem;
+      }
+
+      p {
+        font-size: .9rem;
+      }
+    }
+  }
+
+  .btnContainer {
+    display: flex;
+    flex-direction: column;
+
+    .serviceCardShowMoreBtn {
+      --btn-color: #fff;
+      --btn-border: none;
+      width: 100%;
+    }
+
+    .serviceCardBookBtn {
+      --btn-bg-color: #272727;
+      --btn-border: none;
+      --btn-color: #fff;
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  /*
+  *FeaturePage */
+
+  .featuresSection {
+    .eventsContainer {
+      max-width: 300px;
+      grid-template-columns: 1fr;
+
+    }
+  }
+
+  /* FeatureModal */
+  .Eventmodal {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.858);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .eventModalContent {
+      padding: 1em;
+      background-color: $modalBg;
+      max-height: 100vh;
+      width: 100%;
+      overflow-y: auto; // Tilføj scrollbar, hvis indholdet overstiger skærmens højde
+
+      .close {
+        cursor: pointer;
+        font-size: 2rem;
+      }
+    }
+
+    .eventForm {
+      display: flex;
+      flex-direction: column;
+
+      input,
+      select {
+        margin: .5em 0;
+        border: none;
+        height: 35px;
+        padding: 5px 15px;
+      }
+
+      .eventBtn {
+        --btn-bg-color: #272727;
+        display: static;
+        color: #ffffff;
+        width: 200px;
+        margin: 1em auto;
+      }
+    }
+  }
+}
+
+/* Phone 375px */
+@media screen and (max-width: 375px) {
+  .heroContainer {
+    grid-template-columns: repeat(2, 1fr);
+
+    .heroContent {
+      h1 {
+        font-size: 2.5rem;
+        max-width: fit-content;
+      }
+
+      p {
+        padding: 5px 0;
+        width: 250px;
+      }
+    }
+  }
+
+  /*
+  *Service Page*/
+  .serviceContainer {
+    margin: 0 5px;
+
+    .treatmentCardContainer {
+      grid-template-columns: 1fr;
+      max-width: 320px;
+      margin: 0 auto;
+    }
+
+    .treatmentCard {
+      h2 {
+        font-size: 1rem;
+      }
+
+      p {
+        font-size: .9rem;
+      }
+    }
+  }
+
+  .btnContainer {
+    display: flex;
+    flex-direction: column;
+
+    .serviceCardShowMoreBtn {
+      width: 100%;
+    }
+
+    .serviceCardBookBtn {
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+
+
+}
+
+/* Phone 320px */
+@media screen and (max-width: 320px) {
+  .heroContainer {
+    grid-template-columns: 1fr;
+    overflow: hidden;
+  }
+
+  .heroContainer {
+    grid-template-columns: repeat(2, 1fr);
+
+    .heroContent {
+      h1 {
+        font-size: 2rem;
+        max-width: fit-content;
+      }
+
+      p {
+        padding: 5px 0;
+        width: 250px;
+      }
+    }
+  }
+
+  /* Video modal */
+  .videoModalOverlay {
+    iframe {
+      width: 250px;
+      height: 200px;
     }
   }
 }

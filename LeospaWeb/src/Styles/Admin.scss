@@ -1,8 +1,9 @@
 /* 
-Admin Stylesheet
+*Table of Contents Admin Stylesheet*
 *Dashboard
 *Edit & Create Forms general
 *Show Treatment & Hero
+*Responsivt
 */
 
 // Import Variables
@@ -173,5 +174,20 @@ Admin Stylesheet
   .heroCreateBtn,
   .CreateBtn {
     color: #fff;
+  }
+}
+
+/* 
+*Responsivt */
+@media screen and (max-width: 768px) {
+
+  /* Dashboard */
+  .adminDashboard {
+    margin: 20px 0;
+    padding: 20px 0;
+
+    .dashboardSetingsContainer {
+      grid-template-columns: 1fr;
+    }
   }
 }
