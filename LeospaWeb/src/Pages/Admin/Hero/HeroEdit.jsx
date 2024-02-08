@@ -10,6 +10,7 @@ const HeroEdit = () => {
   const [editError, setEditError] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
 
+
   const validateForm = () => {
     const title1 = document.forms["editHero"]["title1"].value;
     const title2 = document.forms["editHero"]["title2"].value;

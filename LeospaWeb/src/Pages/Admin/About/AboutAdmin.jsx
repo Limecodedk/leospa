@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import useRequestData from '../../../hooks/useRequestData';
 
+
 const AboutAdmin = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const { data, isLoading, error, makeRequest } = useRequestData();
@@ -46,6 +47,7 @@ const AboutAdmin = () => {
       }
     }
   };
+
 
 
   return (

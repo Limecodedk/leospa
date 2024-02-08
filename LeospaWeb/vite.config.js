@@ -6,6 +6,6 @@ export default defineConfig({
   plugins: [react()],
 
   optimizeDeps: {
-    include: ['@tiptap'],
+    include: ['quill'],
   },
 })

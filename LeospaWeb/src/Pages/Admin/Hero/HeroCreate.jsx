@@ -10,6 +10,7 @@ const HeroCreate = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
 
+
   const validateForm = () => {
     const title1 = document.forms["heroCreate"]["title1"].value;
     const title2 = document.forms["heroCreate"]["title2"].value;
