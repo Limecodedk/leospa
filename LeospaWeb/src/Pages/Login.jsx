@@ -23,7 +23,7 @@ const Login = () => {
 
       if (response.ok) {
         console.log('Login successful:', data);
-        window.location.href = '/admin';
+        /*       window.location.href = '/admin'; */
       } else {
         setError('Login failed. Please check your email and password.');
         console.error('Login failed:', data);

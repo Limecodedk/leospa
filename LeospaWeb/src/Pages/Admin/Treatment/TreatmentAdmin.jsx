@@ -19,7 +19,8 @@ const Treatment = () => {
     if (window.confirm("Are you sure you want to delete " + title + "?")) {
       makeRequestDelete("http://localhost:5029/treatment/admin/" + id,
         {
-        }, null, "DELETE")
+        }, null, "DELETE");
+      window.location.reload();
     }
   }
 

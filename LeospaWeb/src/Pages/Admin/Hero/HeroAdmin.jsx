@@ -35,7 +35,8 @@ const HeroAdmin = () => {
     if (window.confirm("Are you sure you want to delete " + title + "?")) {
       makeRequestDelete("http://localhost:5029/hero/admin/" + id,
         {
-        }, null, "DELETE")
+        }, null, "DELETE");
+      window.location.reload();
     }
   }
 

@@ -17,7 +17,8 @@ const NewssubscriptionAdmin = ({ showHeader, numberOfItemsToShow }) => {
     if (window.confirm("Are you sure you want to delete " + name + " with this " + email + "?")) {
       makeRequestDelete("http://localhost:5029/newssubscription/admin/" + id,
         {
-        }, null, "DELETE")
+        }, null, "DELETE");
+      window.location.reload();
     }
   }
 
