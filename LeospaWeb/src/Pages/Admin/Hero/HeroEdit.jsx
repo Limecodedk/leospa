@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import useRequestData from '../../../hooks/useRequestData'
 import { useParams } from 'react-router-dom';
+import Error from '../../../components/Error';
+import Loader from '../../../components/Loader'
 
 const HeroEdit = () => {
   const { id } = useParams()
@@ -56,6 +58,8 @@ const HeroEdit = () => {
     <>
       <section className='editSection'>
         <h1>Edit {data?.title2} Hero </h1>
+        {isLoading && <Loader />}
+        {error && <Error />}
         {editError && <p>{editError}</p>}
         <form className="editForm" name='editHero' onSubmit={handleSubmit}>
           <input type="text" name="title1" defaultValue={data?.title1} />

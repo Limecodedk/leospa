@@ -26,6 +26,7 @@ import NewssubscriptionAdmin from './Pages/Admin/Newssubscription/Newssubscripti
 //Admin stylesheet
 import './Styles/Admin.scss'
 import Appointments from './components/Appointments.jsx';
+import NotFound from './NotFound.jsx';
 
 function App() {
   const router = createBrowserRouter(
@@ -53,6 +54,10 @@ function App() {
           <Route path='footer/edit' element={<FooterEdit />} />
           <Route path='newssubscription' element={<NewssubscriptionAdmin />} />
         </Route>
+
+        {/* NotFound 404 page */}
+        <Route path='*' element={<NotFound />} />
+
       </>
     )
   )

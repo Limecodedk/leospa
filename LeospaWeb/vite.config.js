@@ -7,5 +7,6 @@ export default defineConfig({
 
   optimizeDeps: {
     include: ['quill'],
+    include: ['react-loader-spinner'],
   },
 })

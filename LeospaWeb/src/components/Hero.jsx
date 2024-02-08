@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import useRequestData from '../hooks/useRequestData'
 import { Link } from 'react-router-dom';
 import { CiPlay1 } from "react-icons/ci";
+import Error from './Hero';
+import Loader from './Loader'
 
 const Hero = () => {
   const [videoOpen, setVideoOpen] = useState(false);
@@ -34,6 +36,8 @@ const Hero = () => {
         <div className="heroLeaf">
           <img src="/public/assets/leaf.png" alt="Hero bg left image" />
         </div>
+        {isLoading && <Loader />}
+        {error && <Error />}
         {
           data && data.map(heroItem => {
             if (heroItem.show) {

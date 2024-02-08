@@ -4,8 +4,9 @@ import { FaRegEdit } from "react-icons/fa";
 import { MdDeleteOutline } from "react-icons/md";
 import { Link } from 'react-router-dom';
 import Loader from '../../../components/Loader'
+import Error from '../../../components/Error';
 
-const NewssubscriptionAdmin = ({ showHeader, numberOfItemsToShow }) => {
+const NewssubscriptionAdmin = ({ numberOfItemsToShow }) => {
   const { data, isLoading, error, makeRequest } = useRequestData();
   const { data: dataDelete, isLoading: isLoadingDelete, error: errorDelete, makeRequest: makeRequestDelete } = useRequestData()
 
@@ -26,7 +27,9 @@ const NewssubscriptionAdmin = ({ showHeader, numberOfItemsToShow }) => {
   return (
     <>
       <section className='AdminTableContain'>
-        {showHeader && <h1>News Subscription</h1>}
+        {isLoading && <Loader />}
+        {error && <Error />}
+        <h1>News Subscription</h1>
         <table>
           <thead>
             <tr>

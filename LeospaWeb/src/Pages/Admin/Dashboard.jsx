@@ -3,7 +3,8 @@ import { FaRegEdit } from "react-icons/fa";
 import useRequestData from '../../hooks/useRequestData'
 import { Link } from 'react-router-dom';
 import NewssubscriptionAdmin from './Newssubscription/NewssubscriptionAdmin';
-
+import Error from '../../components/Error';
+import Loader from '../../components/Loader'
 
 const Dashboard = () => {
   const { data, isLoading, error, makeRequest } = useRequestData();
@@ -33,6 +34,8 @@ const Dashboard = () => {
                   </Link>
                 </span>
               </h2>
+              {isLoading && <Loader />}
+              {error && <Error />}
               {data?.slice(0, 5).map((item, index) => (
                 <Link to={"/admin/treatment/" + item._id} key={index}>
                   <h3>{item.title}</h3>
@@ -49,7 +52,7 @@ const Dashboard = () => {
               <h2>Footer <span><Link to={'footer/edit'}><FaRegEdit /> Edit</Link></span></h2>
             </div>
             <div className="dashboardSetings twoCol">
-              <h2>News subscription <span><Link to={'newssubscription'}><FaRegEdit /> Edit</Link></span></h2>
+              <Link to={'newssubscription'}><FaRegEdit /> Edit</Link>
               <NewssubscriptionAdmin showHeader={false} numberOfItemsToShow={3} />
             </div>
           </div>

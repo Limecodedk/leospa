@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import useRequestData from '../../../hooks/useRequestData';
+import Error from '../../../components/Error';
+import Loader from '../../../components/Loader'
 
 
 const AboutAdmin = () => {
@@ -48,11 +50,11 @@ const AboutAdmin = () => {
     }
   };
 
-
-
   return (
     <section className='editSection'>
       <h1>About Edit</h1>
+      {isLoading && <Loader />}
+      {error && <Error />}
       <form action="" className='editForm' name='aboutEdit' onSubmit={handleSubmit}>
         <input type="text" name="title" defaultValue={data?.title} />
         <textarea name="content" cols="30" rows="10" defaultValue={data?.content}></textarea>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import useRequestData from '../hooks/useRequestData'
+import { Link } from 'react-router-dom';
 
 const Book = () => {
   const [errorMessage, setErrorMessage] = useState("");
@@ -102,6 +103,9 @@ const Book = () => {
           <input type="time" name="time" />
           <textarea name="message" id='message' cols="30" rows="3" placeholder='YOUR NOTES'></textarea>
           <button type='submit' className='btn btn-book'>MAKE AN APPOINTMENT</button>
+          <Link to={'/appointments'} className='btn appointmentBtn'>
+            Find appointment
+          </Link>
           <p style={{ color: 'red', fontSize: '0.8rem' }}>{errorMessage}</p>
         </form>
       </div>

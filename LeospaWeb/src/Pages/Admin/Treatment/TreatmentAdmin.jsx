@@ -4,6 +4,8 @@ import parse from 'html-react-parser';
 import { FaRegEdit } from "react-icons/fa";
 import { MdDeleteOutline } from "react-icons/md";
 import { Link } from 'react-router-dom';
+import Error from '../../../components/Error';
+import Loader from '../../../components/Loader'
 
 const Treatment = () => {
   const { data, isLoading, error, makeRequest } = useRequestData()
@@ -28,6 +30,8 @@ const Treatment = () => {
     <>
       <section className='AdminTableContain'>
         <h1>Treament</h1>
+        {isLoading && <Loader />}
+        {error && <Error />}
         <table>
           <thead className='treamentAdminTable'>
             <tr>

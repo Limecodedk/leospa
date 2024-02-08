@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import useRequestData from '../../hooks/useRequestData'
+import Error from '../../components/Error';
+import Loader from '../../components/Loader'
 
 const validateForm = () => {
   const name = document.forms["editFooter"]["name"].value;
@@ -59,6 +61,8 @@ const FooterEdit = () => {
     <>
       <section className='editSection'>
         <h1>Edit Footer</h1>
+        {isLoading && <Loader />}
+        {error && <Error />}
         <form className="editForm" name='editFooter' onSubmit={handleSubmit}>
           <input type="text" name="name" defaultValue={data?.name} />
           <input type="number" name="cvr" defaultValue={data?.cvr} />

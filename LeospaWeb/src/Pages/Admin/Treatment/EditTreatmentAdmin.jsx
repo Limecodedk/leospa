@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import useRequestData from '../../../hooks/useRequestData'
 import { useParams } from 'react-router-dom';
+import Error from '../../../components/Error';
+import Loader from '../../../components/Loader'
 
 const EditTreatmentAdmin = () => {
   const { id } = useParams()
@@ -51,7 +53,8 @@ const EditTreatmentAdmin = () => {
     <>
       <section className='editSection'>
         <h1>Edit {data?.title} Treatment </h1>
-
+        {isLoading && <Loader />}
+        {error && <Error />}
         <form className="editForm" name='EditTreatment' onSubmit={e => handleSubmit(e)}>
           <input type="text" name="title" defaultValue={data?.title} />
           <textarea name="content" cols="30" rows="10" defaultValue={data?.content}></textarea>

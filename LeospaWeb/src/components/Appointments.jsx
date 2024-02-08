@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import useRequestData from '../hooks/useRequestData'
+import Error from './Error';
+import Loader from './Loader'
 
 const Appointments = () => {
   const [errorMessage, setErrorMessage] = useState("");
@@ -69,6 +71,8 @@ const Appointments = () => {
           <p>Do you have an appointment? Find it here:</p>
           <div className="line appointmentsLine"></div>
         </div>
+        {isLoading && <Loader />}
+        {error && <Error />}
         {data && data.length > 0 ? (
           <div className="tableContain">
             <table>
@@ -81,7 +85,6 @@ const Appointments = () => {
                 </tr>
               </thead>
               <tbody>
-
                 {data?.map((item, index) => (
                   <tr key={index}>
                     <td>{item.name}</td>

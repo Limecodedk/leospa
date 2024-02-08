@@ -3,6 +3,8 @@ import useRequestData from '../hooks/useRequestData'
 import parse from 'html-react-parser';
 import Book from '../components/Book';
 import { Link } from 'react-router-dom';
+import Error from '../components/Error';
+import Loader from '../components/Loader'
 
 const Services = () => {
   const [expandedCards, setExpandedCards] = useState({});
@@ -41,6 +43,8 @@ const Services = () => {
           <div className="line serviceLine"></div>
         </div>
         <div className="treatmentCardContainer">
+          {isLoading && <Loader />}
+          {error && <Error />}
           {data?.map((cardItem, index) => (
             <div className="treatmentCard" key={index}>
               <img className='treatmentCardImage' src={`http://localhost:5029/images/treatment/${cardItem.image}`} alt="treatment product images" />

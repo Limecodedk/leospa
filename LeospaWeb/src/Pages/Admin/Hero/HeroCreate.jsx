@@ -9,8 +9,6 @@ const HeroCreate = () => {
   const [editError, setEditError] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
 
-
-
   const validateForm = () => {
     const title1 = document.forms["heroCreate"]["title1"].value;
     const title2 = document.forms["heroCreate"]["title2"].value;
@@ -23,10 +21,8 @@ const HeroCreate = () => {
       setErrorMessage("Please fill in all required fields.");
       return false;
     }
-
     return true;
   }
-
 
   useEffect(() => {
 
