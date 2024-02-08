@@ -9,7 +9,6 @@ const Login = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     try {
       const response = await fetch('http://localhost:5029/login/login', {
         method: 'POST',
@@ -23,7 +22,7 @@ const Login = () => {
 
       if (response.ok) {
         console.log('Login successful:', data);
-        /*       window.location.href = '/admin'; */
+        window.location.href = '/admin';
       } else {
         setError('Login failed. Please check your email and password.');
         console.error('Login failed:', data);

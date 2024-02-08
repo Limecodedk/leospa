@@ -1,46 +1,46 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import useRequestData from '../hooks/useRequestData'
 
-/* Validate */
-const validateForm = () => {
-  const name = document.forms["bookForm"]["name"].value;
-  const email = document.forms["bookForm"]["email"].value;
-  const service = document.forms["bookForm"]["treatment"].value;
-  const phone = document.forms["bookForm"]["phone"].value;
-  const date = document.forms["bookForm"]["date"].value;
-  const time = document.forms["bookForm"]["time"].value;
-  const messages = document.forms["bookForm"]["message"].value;
-
-  errorMessage.textContent = "";
-
-  if (!email.includes("@") || !email.includes(".")) {
-    errorMessage.textContent = "Please enter a valid email address.";
-    return false;
-  }
-
-  if (!/^\d+$/.test(phone) || phone.length < 8) {
-    errorMessage.textContent = "Please enter a valid phone number (at least 8 digits).";
-    return false;
-  }
-
-  const hasScript = /<script.*?>|<\/script>/gi.test(messages);
-  if (hasScript) {
-    errorMessage.textContent = "Message cannot contain scripts.";
-    return false;
-  }
-
-  if (name === "" || email === "" || service === "massage" || phone === "" || date === "" || time === "" || messages === "") {
-    errorMessage.textContent = "Please fill in all required fields.";
-    return false;
-  }
-
-  return true;
-}
-
-
 const Book = () => {
+  const [errorMessage, setErrorMessage] = useState("");
   const { data, isLoading, error, makeRequest } = useRequestData();
   const { data: dataService, isLoading: isLoadingService, error: errorService, makeRequest: makeRequestService } = useRequestData()
+
+  const validateForm = () => {
+    const name = document.forms["bookForm"]["name"].value;
+    const email = document.forms["bookForm"]["email"].value;
+    const service = document.forms["bookForm"]["treatment"].value;
+    const phone = document.forms["bookForm"]["phone"].value;
+    const date = document.forms["bookForm"]["date"].value;
+    const time = document.forms["bookForm"]["time"].value;
+    const messages = document.forms["bookForm"]["message"].value;
+
+    setErrorMessage("");
+
+    if (!email.includes("@") || !email.includes(".")) {
+      setErrorMessage("Please enter a valid email address.");
+      return false;
+    }
+
+    if (!/^\d+$/.test(phone) || phone.length < 8) {
+      setErrorMessage("Please enter a valid phone number (at least 8 digits)");
+      return false;
+    }
+
+    const hasScript = /<script.*?>|<\/script>/gi.test(messages);
+    if (hasScript) {
+      setErrorMessage("Message cannot contain scripts.");
+      return false;
+    }
+
+    if (name === "" || email === "" || service === "massage" || phone === "" || date === "" || time === "" || messages === "") {
+      setErrorMessage("Please fill in all required fields.");
+      return false;
+    }
+
+    return true;
+  }
+
 
   useEffect(() => {
 
@@ -102,7 +102,7 @@ const Book = () => {
           <input type="time" name="time" />
           <textarea name="message" id='message' cols="30" rows="3" placeholder='YOUR NOTES'></textarea>
           <button type='submit' className='btn btn-book'>MAKE AN APPOINTMENT</button>
-          <p id="errorMessage" style={{ color: 'red', fontSize: '0.8rem' }}></p>
+          <p style={{ color: 'red', fontSize: '0.8rem' }}>{errorMessage}</p>
         </form>
       </div>
     </section>

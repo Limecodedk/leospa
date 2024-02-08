@@ -25,6 +25,7 @@ import CreateTreatmentAdmin from './Pages/Admin/Treatment/CreateTreatmentAdmin.j
 import NewssubscriptionAdmin from './Pages/Admin/Newssubscription/NewssubscriptionAdmin.jsx'
 //Admin stylesheet
 import './Styles/Admin.scss'
+import Appointments from './components/Appointments.jsx';
 
 function App() {
   const router = createBrowserRouter(
@@ -35,6 +36,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path='/features' element={<Features />} />
           <Route path='/service' element={<Services />} />
+          <Route path='/appointments' element={<Appointments />} />
           <Route path='/login' element={<Login />} />
         </Route>
 

@@ -24,7 +24,6 @@ const Treatment = () => {
     }
   }
 
-
   return (
     <>
       <section className='AdminTableContain'>

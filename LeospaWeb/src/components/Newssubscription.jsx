@@ -1,23 +1,28 @@
 import React, { useState } from 'react'
 
-const validateForm = () => {
-  const name = document.forms["subscriptionForm"]["name"].value;
-  const email = document.forms["subscriptionForm"]["email"].value;
-
-  errorMessage.textContent = "";
-
-  if (name === "" || email === "") {
-    errorMessage.textContent = "Please fill in all required fields.";
-    return false;
-  }
-
-  return true;
-}
-
 const Newssubscription = () => {
   const [isUnsubscribed, setIsUnsubscribed] = useState(false);
   const [isSubscribe, setIsSubscribe] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
+  const validateForm = () => {
+    const name = document.forms["subscriptionForm"]["name"].value;
+    const email = document.forms["subscriptionForm"]["email"].value;
+
+    setErrorMessage("");
+
+    if (!email.includes("@") || !email.includes(".")) {
+      setErrorMessage("Please enter a valid email address.");
+      return false;
+    }
+
+    if (name === "" || email === "") {
+      setErrorMessage("Please fill in all required fields.");
+      return false;
+    }
+
+    return true;
+  }
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -62,8 +67,8 @@ const Newssubscription = () => {
     <>
       <form className='newssubscription' name='subscriptionForm' onSubmit={e => handleSubmit(e)}>
         <div className="inputContainer">
-          <input type="text" name="name" placeholder='Your name' required />
-          <input type="email" name="email" placeholder='Your Email' required />
+          <input type="text" name="name" placeholder='Your name' />
+          <input type="email" name="email" placeholder='Your Email' />
         </div>
         <div className="checkboxButtonContainer">
           <div className="checkboxContainer">
@@ -77,7 +82,7 @@ const Newssubscription = () => {
           </div>
           <button type='submit'>Submit</button>
         </div>
-        <p id="errorMessage" style={{ color: 'red', fontSize: '0.8rem' }}></p>
+        <p style={{ color: 'red', fontSize: '0.8rem' }}>{errorMessage}</p>
       </form>
       {isSubscribe && <p>Success you subscribe now!</p>}
     </>

@@ -20,6 +20,7 @@
 *LoginPage:
 -login
 *Newsletter
+*Appointments
 *Responsivt
 */
 
@@ -971,6 +972,112 @@ h3 {
     }
   }
 }
+
+/* 
+*Appointments */
+
+.appointments {
+
+  .appointmentsHeading {
+    background-color: $bg;
+    margin-bottom: 2em;
+    padding: 1em 0;
+
+    h1 {
+      text-align: center;
+    }
+
+    p {
+      padding-top: 1em;
+      text-align: center;
+    }
+
+    .appointmentsHeadingImage {
+      margin: .5em auto;
+      display: flex;
+
+    }
+
+    .appointmentsLine {
+      width: 50%;
+      margin: 2em auto;
+    }
+  }
+
+  .tableContain {
+    table {
+      width: 900px;
+      border-collapse: collapse;
+      margin: 20px auto;
+
+      th,
+      td {
+        padding: 10px;
+        border: 1px solid #ccc;
+      }
+
+      th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+      }
+
+      td {
+        text-align: center;
+
+        select {
+          padding: 5px;
+          border-radius: 5px;
+          border: 1px solid #ccc;
+          background-color: #fff;
+          cursor: pointer;
+        }
+      }
+
+      tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+
+      a {
+        display: inline-block;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+      }
+    }
+  }
+
+  .appointmentsMessage {
+    text-align: center;
+    margin: 1em 0;
+  }
+
+  .yourAppointmentsForm {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: 0 auto;
+
+    input {
+      height: 40px;
+      margin: .5em 0;
+      outline: none;
+      border: 1px solid $grayline;
+      padding: 11px;
+    }
+
+    button {
+      width: 250px;
+      margin: 0 auto;
+      --btn-color: #fff;
+
+      &:hover {
+        --btn-color: #272727;
+      }
+    }
+  }
+}
+
 
 /* 
 *Responsivt */

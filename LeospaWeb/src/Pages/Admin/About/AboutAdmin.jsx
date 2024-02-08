@@ -1,28 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import useRequestData from '../../../hooks/useRequestData';
 
-const validateForm = () => {
-  const title1 = document.forms["aboutEdit"]["title"].value;
-  const title2 = document.forms["aboutEdit"]["content"].value;
-
-
-  errorMessage.textContent = "";
-
-  if (title1 === "" || title2 === "") {
-    errorMessage.textContent = "Please fill in all required fields.";
-    return false;
-  }
-
-  return true;
-}
-
-
-
 const AboutAdmin = () => {
+  const [errorMessage, setErrorMessage] = useState("");
   const { data, isLoading, error, makeRequest } = useRequestData();
   const { data: dataService, isLoading: isLoadingService, error: errorService, makeRequest: makeRequestService } = useRequestData();
   const [isEdited, setIsEdited] = useState(false);
   const [editError, setEditError] = useState(null);
+
+  const validateForm = () => {
+    const title1 = document.forms["aboutEdit"]["title"].value;
+    const title2 = document.forms["aboutEdit"]["content"].value;
+
+
+    setErrorMessage("");
+
+    if (title1 === "" || title2 === "") {
+      setErrorMessage("Please fill in all required fields.");
+      return false;
+    }
+
+    return true;
+  }
 
   useEffect(() => {
 
@@ -56,7 +55,7 @@ const AboutAdmin = () => {
         <input type="text" name="title" defaultValue={data?.title} />
         <textarea name="content" cols="30" rows="10" defaultValue={data?.content}></textarea>
         <button type='submit' className='btn editBtn'>Save</button>
-        <p id="errorMessage" style={{ color: 'red', fontSize: '0.8rem' }}></p>
+        <p style={{ color: 'red', fontSize: '0.8rem' }}>{errorMessage}</p>
       </form>
       {isEdited && <p>Success your changes are saved!</p>}
     </section>

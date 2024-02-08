@@ -1,12 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 const NavLink = [
-  { text: "Dashboard", to: "admin" },
-  { text: "Treatment", to: "/treatment" },
+  { text: "Dashboard", to: "/admin" },
+  { text: "Treatment", to: "/admin/treatment" },
   { text: "Hero", to: "/admin/hero" },
   { text: "About", to: "about" },
   { text: "Footer", to: "footer/edit" },
-  { text: "Log out", to: "/" }
+  { text: "Logout", to: "/" }
 ];
 
 const NavbarDesktop = () => {
