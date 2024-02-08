@@ -53,7 +53,6 @@ const Features = () => {
     setShowModal(false);
   };
 
-
   return (
     <>
       <section className='featuresSection'>

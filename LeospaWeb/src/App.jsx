@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState, lazy, Suspense } from 'react'
 import {
   Route,
   RouterProvider,
@@ -6,27 +6,29 @@ import {
   createRoutesFromElements
 } from 'react-router-dom';
 import Layout from './layout/Layout';
-//Pages Import
-import Home from './Pages/Home';
-import Features from './Pages/Features';
-import Services from './Pages/Services.jsx';
-import Login from './Pages/Login.jsx'
-//Admin Page Import
-import LayoutAdmin from './Layout/Admin/LayoutAdmin.jsx';
-import Dashboard from './Pages/Admin/Dashboard.jsx'
-import TeatmentAdmin from './Pages/Admin/Treatment/TreatmentAdmin.jsx'
-import EditTreatmentAdmin from './Pages/Admin/Treatment/EditTreatmentAdmin.jsx'
-import HeroAdmin from './Pages/Admin/Hero/HeroAdmin.jsx';
-import HeroEdit from './Pages/Admin/Hero/HeroEdit.jsx';
-import HeroCreate from './Pages/Admin/Hero/HeroCreate.jsx'
-import FooterEdit from './Pages/Admin/FooterEdit.jsx'
-import AboutAdmin from './Pages/Admin/About/AboutAdmin.jsx'
-import CreateTreatmentAdmin from './Pages/Admin/Treatment/CreateTreatmentAdmin.jsx';
-import NewssubscriptionAdmin from './Pages/Admin/Newssubscription/NewssubscriptionAdmin.jsx'
 //Admin stylesheet
 import './Styles/Admin.scss'
-import Appointments from './components/Appointments.jsx';
-import NotFound from './NotFound.jsx';
+//Pages Import
+const Home = React.lazy(() => import('./Pages/Home'));
+const Features = React.lazy(() => import('./Pages/Features'));
+const Services = React.lazy(() => import('./Pages/Services.jsx'));
+const Appointments = React.lazy(() => import('./components/Appointments.jsx'));
+const Login = React.lazy(() => import('./Pages/Login.jsx'));
+const NotFound = React.lazy(() => import('./NotFound.jsx'));
+//Admin Page Import
+const LayoutAdmin = React.lazy(() => import('./Layout/Admin/LayoutAdmin.jsx'));
+const Dashboard = React.lazy(() => import('./Pages/Admin/Dashboard.jsx'));
+const TeatmentAdmin = React.lazy(() => import('./Pages/Admin/Treatment/TreatmentAdmin.jsx'));
+const EditTreatmentAdmin = React.lazy(() => import('./Pages/Admin/Treatment/EditTreatmentAdmin.jsx'));
+const HeroAdmin = React.lazy(() => import('./Pages/Admin/Hero/HeroAdmin.jsx'));
+const HeroEdit = React.lazy(() => import('./Pages/Admin/Hero/HeroEdit.jsx'));
+const HeroCreate = React.lazy(() => import('./Pages/Admin/Hero/HeroCreate.jsx'));
+const FooterEdit = React.lazy(() => import('./Pages/Admin/FooterEdit.jsx'));
+const AboutAdmin = React.lazy(() => import('./Pages/Admin/About/AboutAdmin.jsx'));
+const CreateTreatmentAdmin = React.lazy(() => import('./Pages/Admin/Treatment/CreateTreatmentAdmin.jsx'));
+const NewssubscriptionAdmin = React.lazy(() => import('./Pages/Admin/Newssubscription/NewssubscriptionAdmin.jsx'));
+import PageLoader from './components/Loader.jsx'
+
 
 function App() {
   const router = createBrowserRouter(
@@ -34,30 +36,29 @@ function App() {
       <>
         {/* PUBLIC */}
         <Route path='/' element={<Layout />} >
-          <Route index element={<Home />} />
-          <Route path='/features' element={<Features />} />
-          <Route path='/service' element={<Services />} />
-          <Route path='/appointments' element={<Appointments />} />
-          <Route path='/login' element={<Login />} />
+          <Route index element={<Suspense fallback={<PageLoader />}><Home /></Suspense>} />
+          <Route path='/features' element={<Suspense fallback={<PageLoader />}><Features /></Suspense>} />
+          <Route path='/service' element={<Suspense fallback={<PageLoader />}><Services /></Suspense>} />
+          <Route path='/appointments' element={<Suspense fallback={<PageLoader />}><Appointments /></Suspense>} />
+          <Route path='/login' element={<Suspense fallback={<PageLoader />}><Login /></Suspense>} />
         </Route>
 
         {/* ADMIN */}
         <Route path='/admin/' element={<LayoutAdmin />} >
-          <Route index element={<Dashboard />} />
-          <Route path='treatment' element={<TeatmentAdmin />} />
-          <Route path='treatment/create' element={<CreateTreatmentAdmin />} />
-          <Route path='treatment/:id' element={<EditTreatmentAdmin />} />
-          <Route path='hero' element={<HeroAdmin />} />
-          <Route path='hero/edit/:id' element={<HeroEdit />} />
-          <Route path='hero/create' element={<HeroCreate />} />
-          <Route path='about' element={<AboutAdmin />} />
-          <Route path='footer/edit' element={<FooterEdit />} />
-          <Route path='newssubscription' element={<NewssubscriptionAdmin />} />
+          <Route index element={<Suspense fallback={<PageLoader />}><Dashboard /></Suspense>} />
+          <Route path='treatment' element={<Suspense fallback={<PageLoader />}><TeatmentAdmin /></Suspense>} />
+          <Route path='treatment/create' element={<Suspense fallback={<PageLoader />}><CreateTreatmentAdmin /></Suspense>} />
+          <Route path='treatment/:id' element={<Suspense fallback={<PageLoader />}><EditTreatmentAdmin /></Suspense>} />
+          <Route path='hero' element={<Suspense fallback={<PageLoader />}><HeroAdmin /></Suspense>} />
+          <Route path='hero/edit/:id' element={<Suspense fallback={<PageLoader />}><HeroEdit /></Suspense>} />
+          <Route path='hero/create' element={<Suspense fallback={<PageLoader />}><HeroCreate /></Suspense>} />
+          <Route path='about' element={<Suspense fallback={<PageLoader />}><AboutAdmin /></Suspense>} />
+          <Route path='footer/edit' element={<Suspense fallback={<PageLoader />}><FooterEdit /></Suspense>} />
+          <Route path='newssubscription' element={<Suspense fallback={<PageLoader />}><NewssubscriptionAdmin /></Suspense>} />
         </Route>
 
         {/* NotFound 404 page */}
-        <Route path='*' element={<NotFound />} />
-
+        <Route path='*' element={<Suspense fallback={<PageLoader />}><NotFound /></Suspense>} />
       </>
     )
   )
