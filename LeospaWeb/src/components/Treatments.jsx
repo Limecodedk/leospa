@@ -22,7 +22,6 @@ const Treatments = () => {
     makeRequestService("http://localhost:5029/treatment")
   }, [])
 
-
   return (
     <>
       <section className='treatments'>

@@ -7,6 +7,7 @@ const Appointments = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const { data, isLoading, error, makeRequest } = useRequestData();
   const { data: dataService, isLoading: isLoadingService, error: errorService, makeRequest: makeRequestService } = useRequestData()
+  const [createdAppointmentId, setCreatedAppointmentId] = useState(null);
 
   const validateForm = () => {
     const email = document.forms["yourAppointments"]["email"].value;
